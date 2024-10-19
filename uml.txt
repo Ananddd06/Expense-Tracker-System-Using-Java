@@ -1,0 +1,70 @@
++-----------------------+
+|        User           |
++-----------------------+
+| - username: String    |
+| - password: String    |
++-----------------------+
+| + User(username: String, password: String)  |
+| + getUsername(): String                      |
+| + getPassword(): String                      |
++-----------------------+
+
++-----------------------+
+|       Expense         |
++-----------------------+
+| - id: int            |
+| - category: String    |
+| - amount: double      |
+| - time: LocalDateTime |
++-----------------------+
+| + Expense(id: int, category: String, amount: double) |
+| + getId(): int                               |
+| + getCategory(): String                       |
+| + getAmount(): double                         |
+| + getTime(): LocalDateTime                   |
++-----------------------+
+
++---------------------------+
+|      UserManager          |
++---------------------------+
+| - users: HashMap<String, User> |
++---------------------------+
+| + register(username: String, password: String): boolean |
+| + login(username: String, password: String): boolean    |
++---------------------------+
+
++---------------------------+
+|     ExpenseManager        |
++---------------------------+
+| - expenses: List<Expense> |
+| - idCounter: int          |
++---------------------------+
+| + addExpense(category: String, amount: double): void     |
+| + getAllExpenses(): List<Expense>                        |
+| + getExpensesByCategory(category: String): List<Expense> |
+| + getExpenseById(id: int): Expense                      |
++---------------------------+
+
++---------------------------+
+|        Dashboard          |
++---------------------------+
+| - expenseManager: ExpenseManager |
+| - scanner: Scanner        |
++---------------------------+
+| + Dashboard(expenseManager: ExpenseManager) |
+| + showMenu(): void       |
+| - addExpense(): void      |
+| - viewAllExpenses(): void  |
+| - viewExpensesByCategory(): void |
+| - getExpenseById(): void  |
++---------------------------+
+
++---------------------------+
+|         Main              |
++---------------------------+
+| - userManager: UserManager |
+| - expenseManager: ExpenseManager |
+| - scanner: Scanner        |
++---------------------------+
+| + main(String[] args): void |
++---------------------------+

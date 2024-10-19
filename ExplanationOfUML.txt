@@ -1,0 +1,77 @@
+UML Class Diagram Breakdown
+The following is a breakdown of the UML class diagram for the Expense tracker system
+1. User Class
+
+Attributes:
+username: String: Stores the username of the user.
+password: String: Stores the password for user authentication.
+Methods:
+User(username: String, password: String): Constructor to initialize a new user.
+getUsername(): String: Returns the username of the user.
+getPassword(): String: Returns the password of the user.
+Explanation: The User class represents individual users of the expense tracker. It holds the user's credentials necessary for registration and login.
+
+2. Expense Class
+
+Attributes:
+id: int: Unique identifier for each expense.
+category: String: Categorizes the type of expense (e.g., food, transportation).
+amount: double: The monetary value of the expense.
+time: LocalDateTime: Records the date and time when the expense was created.
+Methods:
+Expense(id: int, category: String, amount: double): Constructor to initialize a new expense.
+getId(): int: Returns the ID of the expense.
+getCategory(): String: Returns the category of the expense.
+getAmount(): double: Returns the amount of the expense.
+getTime(): LocalDateTime: Returns the timestamp of when the expense was recorded.
+Explanation: The Expense class captures details about each expense, allowing the system to track spending over time.
+
+3. UserManager Class
+
+Attributes:
+users: HashMap<String, User>: A collection that maps usernames to user objects for quick access.
+Methods:
+register(username: String, password: String): boolean: Adds a new user if the username is not already taken; returns true if successful.
+login(username: String, password: String): boolean: Checks if the provided credentials match a registered user; returns true if successful.
+Explanation: The UserManager class handles user-related operations, such as registering new users and authenticating existing users.
+
+4. ExpenseManager Class
+
+Attributes:
+expenses: List<Expense>: A list that stores all expense records.
+idCounter: int: A counter to assign unique IDs to new expenses.
+Methods:
+addExpense(category: String, amount: double): void: Creates a new expense and adds it to the list.
+getAllExpenses(): List<Expense>: Returns a list of all expenses.
+getExpensesByCategory(category: String): List<Expense>: Filters and returns expenses by category.
+getExpenseById(id: int): Expense: Returns a specific expense by its ID.
+Explanation: The ExpenseManager class manages all operations related to expenses, including adding, retrieving, and filtering expenses based on different criteria.
+
+5. Dashboard Class
+
+Attributes:
+expenseManager: ExpenseManager: A reference to the ExpenseManager for managing expenses.
+scanner: Scanner: For user input in the console.
+Methods:
+Dashboard(expenseManager: ExpenseManager): Constructor to initialize the dashboard with the expense manager.
+showMenu(): void: Displays the menu options for the user.
+addExpense(): void: Prompts the user to input expense details and adds them.
+viewAllExpenses(): void: Displays all recorded expenses.
+viewExpensesByCategory(): void: Prompts for a category and displays relevant expenses.
+getExpenseById(): void: Prompts for an expense ID and displays the corresponding expense.
+Explanation: The Dashboard class serves as the user interface for interacting with the expense tracking system. It allows users to perform various operations through a console menu.
+
+6. Main Class
+
+Attributes:
+userManager: UserManager: A reference to the user manager for handling user-related operations.
+expenseManager: ExpenseManager: A reference to the expense manager.
+scanner: Scanner: For user input in the console.
+Methods:
+main(String[] args): void: The entry point of the application where user registration and login occur.
+Explanation: The Main class orchestrates the flow of the application by initializing the necessary managers and allowing users to register or log in.
+
+Class Relationships
+Associations:
+The Dashboard class has an association with the ExpenseManager, as it needs access to the expense management functions.
+The UserManager and ExpenseManager operate independently, but both are instantiated in the Main class.
